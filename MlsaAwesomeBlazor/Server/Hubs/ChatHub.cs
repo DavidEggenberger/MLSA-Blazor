@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.SignalR;
+using MlsaAwesomeBlazor.Shared;
 
 namespace MlsaAwesomeBlazor.Server.Hubs
 {
@@ -6,10 +7,10 @@ namespace MlsaAwesomeBlazor.Server.Hubs
     {
         public async void SendMessage(string author, string message)
         {
-            await Clients.All.SendAsync("ReceiveMessage", new
+            await Clients.All.SendAsync("ReceiveMessage", new ChatMessage
             {
-                author,
-                message
+                Author = author,
+                Message = message
             });
         }
     }

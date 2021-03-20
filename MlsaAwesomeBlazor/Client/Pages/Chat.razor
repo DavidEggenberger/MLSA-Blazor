@@ -1,0 +1,42 @@
+@page "/chat"
+@inject HubConnection Connection
+
+<h1>Chat</h1>
+
+<EditForm Model="@_form" OnValidSubmit="@HandleSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <InputText @bind-Value="_form.Message" />
+    <button type="submit">Send</button>
+</EditForm>
+
+@code {
+
+    public class MessageForm
+    {
+        [Required]
+        public string Message { get; set; }
+    }
+
+    private readonly MessageForm _form = new MessageForm();
+
+    public List<ChatMessage> Messages { get; } = new List<ChatMessage>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Connection.On("ReceiveMessage", (ChatMessage message) =>
+        {
+            Messages.Add(message);
+            StateHasChanged();
+        });
+
+        await Connection.StartAsync();
+    }
+
+    public async Task HandleSubmit()
+    {
+        await Connection.SendAsync("SendMessage", "TODO: User", _form.Message);
+        _form.Message = "";
+    }
+}
