@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MlsaAwesomeBlazor.Server.Hubs;
 using System.Linq;
 
 namespace MlsaAwesomeBlazor.Server
@@ -24,6 +25,7 @@ namespace MlsaAwesomeBlazor.Server
         {
 
             services.AddControllersWithViews();
+            services.AddSignalR();
             services.AddRazorPages();
         }
 
@@ -52,6 +54,7 @@ namespace MlsaAwesomeBlazor.Server
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapHub<ChatHub>("/hubs/chat");
                 endpoints.MapFallbackToFile("index.html");
             });
         }
