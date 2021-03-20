@@ -9,11 +9,11 @@
         }
     </div>
 
-    <EditForm Model="@_form" OnValidSubmit="@HandleSubmit">
+    <EditForm Model="@_form" OnValidSubmit="@HandleSubmit" class="border p-3">
         <DataAnnotationsValidator />
         <ValidationSummary />
 
-        <div class="border p-3">
+        <div>
             <InputText @bind-Value="_form.Message"
                 class="form-control input-block" placeholder="Type a message..."
                 aria-label="Compose a message..." aria-describedby="btn-submit" />
