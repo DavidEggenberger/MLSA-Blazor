@@ -48,7 +48,8 @@
             StateHasChanged();
         });
 
-        await Connection.StartAsync();
+        if (Connection.State is HubConnectionState.Disconnected)
+            await Connection.StartAsync();
     }
 
     public async Task HandleSubmit()
