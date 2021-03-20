@@ -10,10 +10,7 @@
     <div>
         @foreach (var item in Messages)
         {
-            <div>
-                <p class="m-0 text-bold">@item.Author</p>
-                <p>@item.Message</p>
-            </div>
+            <ChatMessageEntry Author="@item.Author" Text="@item.Message" />
         }
     </div>
 
