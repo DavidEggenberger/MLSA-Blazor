@@ -6,6 +6,6 @@ Demo Project showcasing Blazor's possibilities to efficiently write Full Stack a
 - Connected Service (HttpClient through Swagger Documentation)
 - Fluent Validation (same Validator on Client + Server)
 - Identity (IdentityServer through ApiAuthorization.IdentityServer abstraction package)
-- Realtime Functionality (SignalR)
+- [x] Realtime Functionality (SignalR)
 - Unit Tests
 - Code Reuse (same services in Client + Server)
