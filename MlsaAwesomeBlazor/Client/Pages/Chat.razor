@@ -7,8 +7,23 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <InputText @bind-Value="_form.Message" />
-    <button type="submit">Send</button>
+    <div>
+        @foreach (var item in Messages)
+        {
+            <div>
+                <p class="m-0 text-bold">@item.Author</p>
+                <p>@item.Message</p>
+            </div>
+        }
+    </div>
+
+    <div class="form-group">
+        <InputText @bind-Value="_form.Message"
+            class="form-control"
+            placeholder="Type a message..." />
+
+    </div>
+    <button type="submit" class="btn btn-primary">Send</button>
 </EditForm>
 
 @code {
