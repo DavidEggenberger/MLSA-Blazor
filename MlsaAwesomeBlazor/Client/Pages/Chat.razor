@@ -1,0 +1,60 @@
+@page "/chat"
+@inject HubConnection Connection
+
+<section class="p-4">
+    <div>
+        @foreach (var item in Messages)
+        {
+            <ChatMessageEntry Author="@item.Author" Text="@item.Message" />
+        }
+    </div>
+
+    <EditForm Model="@_form" OnValidSubmit="@HandleSubmit" class="border p-3">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div>
+            <InputText @bind-Value="_form.Message"
+                class="form-control input-block" placeholder="Type a message..."
+                aria-label="Compose a message..." aria-describedby="btn-submit" />
+
+            <div class="form-actions mt-2">
+                <button class="btn btn-primary" type="submit" id="btn-submit">
+                    Send
+                </button>
+            </div>
+        </div>
+    </EditForm>
+        
+</section>
+
+@code {
+
+    public class MessageForm
+    {
+        [Required]
+        public string Message { get; set; }
+    }
+
+    private readonly MessageForm _form = new MessageForm();
+
+    public List<ChatMessage> Messages { get; } = new List<ChatMessage>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Connection.On("ReceiveMessage", (ChatMessage message) =>
+        {
+            Messages.Add(message);
+            StateHasChanged();
+        });
+
+        if (Connection.State is HubConnectionState.Disconnected)
+            await Connection.StartAsync();
+    }
+
+    public async Task HandleSubmit()
+    {
+        await Connection.SendAsync("SendMessage", "TODO: User", _form.Message);
+        _form.Message = "";
+    }
+}
