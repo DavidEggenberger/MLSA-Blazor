@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MlsaAwesomeBlazor.Server", "MlsaAwesomeBlazor\Server\MlsaAwesomeBlazor.Server.csproj", "{208B69BD-178B-4CB8-BF96-2E972C0D2230}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MlsaAwesomeBlazor.Server", "MlsaAwesomeBlazor\Server\MlsaAwesomeBlazor.Server.csproj", "{208B69BD-178B-4CB8-BF96-2E972C0D2230}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MlsaAwesomeBlazor.Client", "MlsaAwesomeBlazor\Client\MlsaAwesomeBlazor.Client.csproj", "{99F7F0DE-426C-421F-80BA-9F497B3CEA2F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MlsaAwesomeBlazor.Client", "MlsaAwesomeBlazor\Client\MlsaAwesomeBlazor.Client.csproj", "{99F7F0DE-426C-421F-80BA-9F497B3CEA2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MlsaAwesomeBlazor.Shared", "MlsaAwesomeBlazor\Shared\MlsaAwesomeBlazor.Shared.csproj", "{7CA4CFF0-6DE9-4AF9-9AD4-8FA0CB9CE08F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MlsaAwesomeBlazor.Shared", "MlsaAwesomeBlazor\Shared\MlsaAwesomeBlazor.Shared.csproj", "{7CA4CFF0-6DE9-4AF9-9AD4-8FA0CB9CE08F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

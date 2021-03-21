@@ -1,0 +1,27 @@
+﻿@page
+@model MlsaAwesomeBlazor.Server.Pages.LoginModel
+@using Microsoft.AspNetCore.Identity
+@using MlsaAwesomeBlazor.Server
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@inject SignInManager<IdentityUser> SignInManager
+@{
+}
+
+
+<section>
+    <h4>Use different service for log in:</h4>
+    <hr />
+    @{
+        var providers = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+        <form asp-action="ExternalLogin" asp-controller="account" asp-route-returnurl="@Model.returnUrl" method="post" class="form-horizontal">
+            <div>
+                <p>
+                    @foreach (var provider in providers)
+                    {
+                        <input type="submit" class="btn btn-info" value="@provider.Name" name="provider" />
+                    }
+                </p>
+            </div>
+        </form>
+    }
+</section>

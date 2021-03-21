@@ -24,6 +24,8 @@ namespace MlsaAwesomeBlazor.Client
                 .WithAutomaticReconnect()
                 .Build());
 
+            builder.Services.AddApiAuthorization();
+
             await builder.Build().RunAsync();
         }
     }
